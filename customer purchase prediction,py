@@ -1,0 +1,58 @@
+import numpy as np
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LogisticRegression
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.metrics import accuracy_score
+
+X = np.array([
+    [20, 15000],
+    [22, 18000],
+    [25, 22000],
+    [28, 30000],
+    [30, 35000],
+    [32, 40000],
+    [35, 45000],
+    [38, 50000],
+    [40, 55000],
+    [45, 60000]
+])
+
+y = np.array([0, 0, 0, 1, 1, 1, 1, 1, 1, 1])
+
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y, test_size=0.2, random_state=42, stratify=y
+)
+
+logistic_model = LogisticRegression(max_iter=1000)
+logistic_model.fit(X_train, y_train)
+
+tree_model = DecisionTreeClassifier(random_state=42)
+tree_model.fit(X_train, y_train)
+
+new_customer = np.array([[27, 28000]])
+
+logistic_prediction = logistic_model.predict(new_customer)
+tree_prediction = tree_model.predict(new_customer)
+
+logistic_test_prediction = logistic_model.predict(X_test)
+tree_test_prediction = tree_model.predict(X_test)
+
+logistic_accuracy = accuracy_score(y_test, logistic_test_prediction)
+tree_accuracy = accuracy_score(y_test, tree_test_prediction)
+
+print("New Customer")
+print("Age:", 27)
+print("Income:", 28000)
+
+if logistic_prediction[0] == 1:
+    print("Logistic Regression: Purchase")
+else:
+    print("Logistic Regression: No Purchase")
+
+if tree_prediction[0] == 1:
+    print("Decision Tree: Purchase")
+else:
+    print("Decision Tree: No Purchase")
+
+print("Logistic Regression Accuracy:", logistic_accuracy)
+print("Decision Tree Accuracy:", tree_accuracy)
