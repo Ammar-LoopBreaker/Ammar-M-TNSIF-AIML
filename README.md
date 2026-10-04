@@ -1,9 +1,9 @@
 #  TNS India Foundation – AIML Training Repository
 
-\<p align="center">
-&#x20; \<b>Artificial Intelligence & Machine Learning Training Program\</b>\<br>
-&#x20; \<i>Daily Practice • Assignments • Machine Learning • Data Analysis • Problem Solving\</i>
-\</p>
+<p align="center">
+  <b>Artificial Intelligence & Machine Learning Training Program</b><br>
+  <i>Daily Practice • Assignments • Machine Learning • Data Analysis • Problem Solving</i>
+</p>
 
 ---
 
